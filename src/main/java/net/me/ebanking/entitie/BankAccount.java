@@ -23,6 +23,7 @@ public class BankAccount {
     private Long id;
     private Date createdAt;
     private double balance;
+    @Enumerated(EnumType.STRING)
     private AccountStatus status;
     private String accountNumber;
     private String currency;

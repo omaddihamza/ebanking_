@@ -19,6 +19,7 @@ public class AccountOperation {
     private Date date;
     private double amount;
     private String description;
+    @Enumerated(EnumType.STRING)
     private OperationType type;
     @ManyToOne
     private BankAccount bankAccount;

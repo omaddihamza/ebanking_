@@ -81,6 +81,13 @@ public class BankAccountServiceImpl implements BankAccountService {
     }
 
     @Override
+    public List<CustomerDto> getCustomerByKeyword(String keyword) {
+        List<Customer> customers = customerRepository.searchCustomer(keyword);
+        List<CustomerDto> customerDtos =  customers.stream().map(c->customerMapper.fromCustomer(c)).collect(Collectors.toList());
+        return customerDtos;
+    }
+
+    @Override
     public SavingAccountDto saveSavingBankAccount(double initialBalance, double interestRate, Long customerId) throws CustomerNotFundException {
         Customer customer = customerRepository.findById(customerId).orElse(null);
         if(customer==null){

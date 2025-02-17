@@ -15,6 +15,7 @@ public interface BankAccountService {
     CustomerDto getCustomer(Long id) throws CustomerNotFundException;
     void updateCustomer(Long id, CustomerDto customerDto) throws CustomerNotFundException;
     void deleteCustomer(Long id) throws CustomerNotFundException;
+    List<CustomerDto> getCustomerByKeyword(String keyword);
 
 
 

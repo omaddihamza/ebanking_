@@ -8,6 +8,7 @@ import java.util.List;
 public class AccountHistoryDto {
     private Long accountId;
     private double balance;
+    private String accountNumber;
     private int currentPage;
     private int totalPage;
     private int pageSize;

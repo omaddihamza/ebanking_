@@ -32,5 +32,5 @@ public interface BankAccountService {
     List<AccountOperationDto> findOperationsByAccount(Long id);
 
 
-    AccountHistoryDto gatAccountHistory(Long id, int page, int size) throws AccountNotFundException;
+    AccountHistoryDto gatAccountHistory(String accountNumber, int page, int size) throws AccountNotFundException;
 }

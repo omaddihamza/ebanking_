@@ -1,0 +1,27 @@
+<div class="card">
+  <h1 class="card-header">New Customer</h1>
+  <div class="card-body">
+    <form [formGroup]="customerFormGroup" (ngSubmit)="handleCustomer()">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" class="form-control" formControlName="name" placeholder="Enter Full Name"
+               [ngClass]="{'is-invalid': customerFormGroup.get('name')?.invalid && customerFormGroup.get('name')?.touched}">
+        <div *ngIf="customerFormGroup.get('name')?.invalid && customerFormGroup.get('name')?.touched" class="text-danger">
+          Full Name is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Email address</label>
+        <input type="email" class="form-control" formControlName="email" placeholder="Enter email"
+               [ngClass]="{'is-invalid': customerFormGroup.get('email')?.invalid && customerFormGroup.get('email')?.touched}">
+        <div *ngIf="customerFormGroup.get('email')?.invalid && customerFormGroup.get('email')?.touched" class="text-danger">
+          <span *ngIf="customerFormGroup.get('email')?.errors?.['required']">Email is required.</span>
+          <span *ngIf="customerFormGroup.get('email')?.errors?.['email']">Invalid email format.</span>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="!customerFormGroup.valid" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

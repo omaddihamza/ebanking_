@@ -3,7 +3,7 @@ package net.me.ebanking.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
+
 import net.me.ebanking.enums.AccountStatus;
 
 import java.util.Date;

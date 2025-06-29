@@ -10,10 +10,10 @@ import net.me.ebanking.enums.AccountStatus;
 import java.util.Date;
 import java.util.List;
 
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TYPE", length =4 )
 @Entity

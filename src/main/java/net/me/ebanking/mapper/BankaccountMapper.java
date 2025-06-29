@@ -8,6 +8,7 @@ import net.me.ebanking.entitie.SavingAccount;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+
 @Service
 @AllArgsConstructor
 public class BankaccountMapper {

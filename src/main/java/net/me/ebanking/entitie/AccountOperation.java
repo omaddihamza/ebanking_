@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import net.me.ebanking.enums.OperationType;
 
 import java.util.Date;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data

@@ -1,0 +1,51 @@
+<ng-container *ngIf="customers | async as listCustomer; else failure">
+  <div class="card mt-4">
+    <h1 class="card-header">Les Customers</h1>
+    <div class="card-body">
+      <form #searchForm="ngForm" (ngSubmit)="search(searchForm)" class="mb-4 d-flex align-items-center gap-2">
+        <label class="form-label mb-0">Keyword:</label>
+        <input type="text" name="keyword" ngModel class="form-control w-25" placeholder="Search customer..." />
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+
+      <table class="table table-striped table-hover">
+        <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Full Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let c of listCustomer">
+          <th scope="row">{{ c.id }}</th>
+          <td>{{ c.name }}</td>
+          <td>{{ c.email }}</td>
+          <td>
+            <button (click)="deleteCustomer(c.id)" class="btn btn-danger btn-sm">
+              Delete
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #failure>
+  <ng-container *ngIf="errorMessage; else loading">
+    <div class="alert alert-danger mt-4" role="alert">
+      {{ errorMessage }}
+    </div>
+  </ng-container>
+
+  <ng-template #loading>
+    <div class="d-flex justify-content-center align-items-center mt-4">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </ng-template>
+</ng-template>

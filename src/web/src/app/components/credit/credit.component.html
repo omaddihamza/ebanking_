@@ -1,0 +1,6 @@
+<form [formGroup]="creditFormGroup" (ngSubmit)="handelCredit()">
+  <input class="form-control mt-2" formControlName="accountNumber" placeholder="Account Number">
+  <input class="form-control mt-2" formControlName="amount" placeholder="Amount">
+  <textarea class="form-control mt-2" formControlName="description" placeholder="Description"></textarea>
+  <button class="btn btn-primary mt-2">Send</button>
+</form>

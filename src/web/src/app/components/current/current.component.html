@@ -1,0 +1,6 @@
+<form [formGroup]="currentAccountForm" (ngSubmit)="createCurrentAccount()">
+  <input class="form-control mt-2" formControlName="initialBalance" placeholder="Initial Balance">
+  <input class="form-control mt-2" formControlName="overDraft" placeholder="Over Draft">
+  <input class="form-control mt-2" formControlName="customerId" placeholder="Customer Id">
+  <button class="btn btn-success mt-2" type="submit">Create</button>
+</form>

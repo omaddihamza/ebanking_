@@ -1,0 +1,6 @@
+<form [formGroup]="transferFormGroup" (ngSubmit)="handelTransfer()">
+  <input class="form-control mt-2" formControlName="accountNumberSource" placeholder="Account Number Source">
+  <input class="form-control mt-2" formControlName="accountNumberDestination" placeholder="Account Number Destination">
+  <input class="form-control mt-2" formControlName="amount" placeholder="Amount">
+  <button class="btn btn-primary mt-2">Send</button>
+</form>

@@ -1,0 +1,30 @@
+.card {
+  margin-bottom: 1.5rem;
+}
+
+.card-header {
+  font-size: 1.25rem;
+  font-weight: 600;
+  background-color: #f8f9fa;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+input.form-control {
+  margin-right: 0.5rem;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+}
+
+.nav-tabs .nav-link {
+  cursor: pointer;
+}
+
+.tab-pane {
+  margin-top: 1rem;
+}

@@ -26,7 +26,7 @@ export class NewCustomerComponent implements OnInit{
    let customer:Customer = this.customerFormGroup.value
     this.customerService.saveCustomer(customer).subscribe({
       next: data=>{
-        this.router.navigate(["/customers"]);
+        this.router.navigate(["/admin/customers"]);
       },
       error: err => {
         console.log(err)

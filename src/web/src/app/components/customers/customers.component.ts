@@ -3,6 +3,7 @@ import {CustomerService} from "../../services/customer.service";
 import {Customer} from "../../modeles/customer.model";
 import {catchError, Observable, throwError} from "rxjs";
 import {NgForm} from "@angular/forms";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-customers',
@@ -13,7 +14,7 @@ export class CustomersComponent implements OnInit{
 
   customers!:Observable<Customer[]>;
   errorMessage!:string;
-  constructor(private customerService:CustomerService) {
+  constructor(private customerService:CustomerService, public authService:AuthService) {
   }
 
     ngOnInit(): void {

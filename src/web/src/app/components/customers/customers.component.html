@@ -14,7 +14,9 @@
           <th scope="col">#</th>
           <th scope="col">Full Name</th>
           <th scope="col">Email</th>
-          <th scope="col">Actions</th>
+          <ng-container *ngIf="authService.roles.includes('ADMIN')">
+            <th scope="col">Actions</th>
+          </ng-container>
         </tr>
         </thead>
         <tbody>
@@ -22,11 +24,13 @@
           <th scope="row">{{ c.id }}</th>
           <td>{{ c.name }}</td>
           <td>{{ c.email }}</td>
-          <td>
-            <button (click)="deleteCustomer(c.id)" class="btn btn-danger btn-sm">
-              Delete
-            </button>
-          </td>
+          <ng-container *ngIf="authService.roles.includes('ADMIN')">
+            <td>
+              <button (click)="deleteCustomer(c.id)" class="btn btn-danger btn-sm">
+                Delete
+              </button>
+            </td>
+          </ng-container>
         </tr>
         </tbody>
       </table>

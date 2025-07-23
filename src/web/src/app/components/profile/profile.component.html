@@ -1,0 +1,63 @@
+<ng-container>
+  <div class="card mt-4">
+    <h1 class="card-header">Profile</h1>
+    <div class="card-body">
+      <div class="container py-2">
+        <div class="row">
+          <!-- Profile Picture & Basic Info -->
+          <div class="col-lg-4">
+            <div class="card mb-4" style="background-color: #f5f5f5;">
+              <div class="card-body text-center">
+                <img
+                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                  alt="avatar"
+                  class="rounded-circle img-fluid"
+                  style="width: 150px;"
+                />
+                <h5 class="my-3">{{ profile?.username }}</h5>
+                <p class="text-muted mb-1">{{ profile?.role }}</p>
+                <p class="text-muted mb-4">{{ profile?.address || 'Bay Area, San Francisco, CA' }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile Details -->
+          <div class="col-lg-8">
+            <div class="card mb-4" style="background-color: #f5f5f5;">
+              <div class="card-body">
+                <div class="row mb-3">
+                  <div class="col-sm-3"><strong>Full Name</strong></div>
+                  <div class="col-sm-9 text-muted">{{ profile?.username }}</div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-sm-3"><strong>Email</strong></div>
+                  <div class="col-sm-9 text-muted">{{ profile?.email || 'example@example.com' }}</div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-sm-3"><strong>Phone</strong></div>
+                  <div class="col-sm-9 text-muted">{{ profile?.phone || '(097) 234-5678' }}</div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-sm-3"><strong>Mobile</strong></div>
+                  <div class="col-sm-9 text-muted">{{ profile?.mobile || '(098) 765-4321' }}</div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-sm-3"><strong>Address</strong></div>
+                  <div class="col-sm-9 text-muted">{{ profile?.address || 'Bay Area, San Francisco, CA' }}</div>
+                </div>
+                <div class="row align-items-center">
+                  <div class="col-sm-3"><strong>Password</strong></div>
+                  <div class="col-sm-6 text-muted">**********</div>
+                  <div class="col-sm-3">
+                    <button class="btn btn-sm btn-link" (click)="changePassword()">Change Password</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Profile Details -->
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -11,6 +11,10 @@ export class AccountService {
   url= environment.path
   constructor(private http :HttpClient) { }
 
+  getAccounts():Observable<any>{
+    return this.http.get(`${this.url}/bankaccounts`)
+  }
+
    searchAccount(account:string, page:number, size:number):Observable<Account>{
       return this.http.get<Account>(`${this.url}/operation/${account}/pageOperation?page=${page}&size=${size}`)
    }

@@ -26,9 +26,8 @@
           <td>{{ c.email }}</td>
           <ng-container *ngIf="authService.roles.includes('ADMIN')">
             <td>
-              <button (click)="deleteCustomer(c.id)" class="btn btn-danger btn-sm">
-                Delete
-              </button>
+              <button (click)="deleteCustomer(c.id)" class="btn btn-danger btn-sm me-2">Delete</button>
+              <button (click)="updateCustomer(c.id)" class="btn btn-primary btn-sm">Update</button>
             </td>
           </ng-container>
         </tr>

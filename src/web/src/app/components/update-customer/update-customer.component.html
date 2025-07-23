@@ -1,0 +1,63 @@
+<!-- Loading Spinner -->
+<div *ngIf="isLoading" class="d-flex justify-content-center mt-4">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<!-- Form Card -->
+<div class="card mt-4" *ngIf="!isLoading">
+  <h1 class="card-header">Update Customer</h1>
+  <div class="card-body">
+    <form [formGroup]="editCustomer" (ngSubmit)="onSubmit()" novalidate>
+
+      <!-- Full Name -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Full Name</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          formControlName="name"
+          placeholder="Enter Full Name"
+          [ngClass]="{
+            'is-invalid': editCustomer.get('name')?.invalid && editCustomer.get('name')?.touched
+          }"
+        />
+        <div
+          *ngIf="editCustomer.get('name')?.invalid && editCustomer.get('name')?.touched"
+          class="invalid-feedback"
+        >
+          Full Name is required.
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          formControlName="email"
+          placeholder="Enter email"
+          [ngClass]="{
+            'is-invalid': editCustomer.get('email')?.invalid && editCustomer.get('email')?.touched
+          }"
+        />
+        <div
+          *ngIf="editCustomer.get('email')?.invalid && editCustomer.get('email')?.touched"
+          class="invalid-feedback"
+        >
+          <span *ngIf="editCustomer.get('email')?.errors?.['required']">Email is required.</span>
+          <span *ngIf="editCustomer.get('email')?.errors?.['email']">Invalid email format.</span>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary" [disabled]="editCustomer.invalid">
+        Update
+      </button>
+    </form>
+  </div>
+</div>

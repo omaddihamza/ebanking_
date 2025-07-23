@@ -3,6 +3,7 @@ package net.me.ebanking.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.me.ebanking.entitie.AppUser;
 import net.me.ebanking.enums.AccountStatus;
 
 import java.util.Date;
@@ -17,5 +18,6 @@ public class SavingAccountDto extends BankAccountDto {
     private String accountNumber;
     private String currency;
     private CustomerDto customerDto;
+    private AppUser createdBy;
     private double interestRate;
 }

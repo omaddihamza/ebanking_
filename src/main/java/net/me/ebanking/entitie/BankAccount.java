@@ -28,6 +28,8 @@ public class BankAccount {
     private String accountNumber;
     private String currency;
     @ManyToOne
+    private AppUser createdBy;
+    @ManyToOne
     private Customer customer;
     @OneToMany(mappedBy = "bankAccount")
     private List<AccountOperation> accountOperations;

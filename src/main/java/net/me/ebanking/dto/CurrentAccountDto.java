@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import net.me.ebanking.entitie.AppUser;
 import net.me.ebanking.enums.AccountStatus;
 
 import java.util.Date;
@@ -20,4 +21,5 @@ public class CurrentAccountDto extends BankAccountDto {
     private String currency;
     private CustomerDto customerDto;
     private double overDraft;
+    private AppUser createdBy;
 }

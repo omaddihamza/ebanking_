@@ -16,6 +16,7 @@ import net.me.ebanking.repository.AccountOperationRepository;
 import net.me.ebanking.repository.BankAccountRepository;
 import net.me.ebanking.repository.CustomerRepository;
 import net.me.ebanking.utils.AccountNumber;
+import net.me.ebanking.utils.AuthUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class BankAccountServiceImpl implements BankAccountService {
 
+    private AuthUtils authUtils;
     private CustomerRepository customerRepository;
     private BankAccountRepository bankAccountRepository;
     private AccountOperationRepository accountOperationRepository;
@@ -43,6 +45,7 @@ public class BankAccountServiceImpl implements BankAccountService {
     @Override
     public Customer save(CustomerDto customerDto) {
          Customer customer = customerMapper.fromCustomerDto(customerDto);
+         customer.setCreatedBy(authUtils.getCurrentUser());
          customer = customerRepository.save(customer);
         return customer;
     }
@@ -102,6 +105,7 @@ public class BankAccountServiceImpl implements BankAccountService {
         savingAccount.setCurrency("DH");
         savingAccount.setCustomer(customer);
         savingAccount.setInterestRate(interestRate);
+        savingAccount.setCreatedBy(authUtils.getCurrentUser());
         SavingAccount saveAccount = bankAccountRepository.save(savingAccount);
         return bankaccountMapper.fromSavingAccount(saveAccount);
     }
@@ -120,6 +124,7 @@ public class BankAccountServiceImpl implements BankAccountService {
         currentAccount.setCurrency("DH");
         currentAccount.setCustomer(customer);
         currentAccount.setOverDraft(overDraft);
+        currentAccount.setCreatedBy(authUtils.getCurrentUser());
         CurrentAccount savaAccount = bankAccountRepository.save(currentAccount);
         return bankaccountMapper.fromCurrentAccount(savaAccount);
     }

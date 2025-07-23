@@ -6,6 +6,7 @@ import net.me.ebanking.dto.*;
 import net.me.ebanking.exception.AccountNotFundException;
 import net.me.ebanking.exception.BanlanceNotSufficentException;
 import net.me.ebanking.service.BankAccountService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,22 +19,26 @@ public class OperationController {
     private BankAccountService bankAccountService;
 
     @PostMapping("transfer")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public void transfer(String accountNumberSource, String accountNumberDestination, double amount) throws BanlanceNotSufficentException, AccountNotFundException {
         bankAccountService.transfer(accountNumberSource, accountNumberDestination, amount);
     }
 
     @PostMapping("account/transfer")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public TransferDto credit(@RequestBody TransferDto transferDto) throws BanlanceNotSufficentException, AccountNotFundException {
         bankAccountService.transfer(transferDto.getAccountNumberSource(), transferDto.getAccountNumberDestination(), transferDto.getAmount());
         return transferDto;
     }
 
     @PostMapping("credit")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public void credit(String accountNumber, double amount, String description) throws AccountNotFundException {
         bankAccountService.credit(accountNumber, amount, description);
     }
 
     @PostMapping("account/credit")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public CreditDto credit(@RequestBody CreditDto creditDto) throws AccountNotFundException {
         bankAccountService.credit(creditDto.getAccountNumber(), creditDto.getAmount(), creditDto.getDescription());
         return creditDto;

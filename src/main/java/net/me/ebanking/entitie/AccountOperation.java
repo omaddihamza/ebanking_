@@ -22,6 +22,8 @@ public class AccountOperation {
     @Enumerated(EnumType.STRING)
     private OperationType type;
     @ManyToOne
+    private AppUser performedBy;
+    @ManyToOne
     private BankAccount bankAccount;
 
 

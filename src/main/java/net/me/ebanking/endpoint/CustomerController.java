@@ -20,35 +20,35 @@ public class CustomerController {
     private BankAccountService bankAccountService;
 
     @PostMapping("customer")
-    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public Customer save(@RequestBody CustomerDto customerDto) {
         return bankAccountService.save(customerDto);
     }
 
     @GetMapping("customers")
-    @PreAuthorize("hasAuthority('SCOPE_USER')")
+    @PreAuthorize("hasAuthority('ROLE_USER') or hasAuthority('ROLE_ADMIN')")
     public List<CustomerDto> customerList() {
         return bankAccountService.customerList();
     }
 
     @GetMapping("customer/{id}")
-    @PreAuthorize("hasAuthority('SCOPE_USER')")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
     public CustomerDto getCustomer(@PathVariable Long id) throws CustomerNotFundException {
         return bankAccountService.getCustomer(id);
     }
 
     @PutMapping("updatecustomer/{id}")
-    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public void updateCustomer(@PathVariable Long id,@RequestBody CustomerDto customerDto) throws CustomerNotFundException {
         bankAccountService.updateCustomer(id, customerDto);
     }
     @DeleteMapping("deletecustomer/{id}")
-    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public void deleteCustomer(@PathVariable Long id) throws CustomerNotFundException {
         bankAccountService.deleteCustomer(id);
     }
     @GetMapping("customers/search")
-    @PreAuthorize("hasAuthority('SCOPE_USER')")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
     public List<CustomerDto> getCustomerByKeyword(@RequestParam("keyword") String keyword) {
         return bankAccountService.getCustomerByKeyword(keyword);
     }

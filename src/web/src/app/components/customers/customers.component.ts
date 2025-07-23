@@ -4,6 +4,7 @@ import {Customer} from "../../modeles/customer.model";
 import {catchError, Observable, throwError} from "rxjs";
 import {NgForm} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-customers',
@@ -14,7 +15,7 @@ export class CustomersComponent implements OnInit{
 
   customers!:Observable<Customer[]>;
   errorMessage!:string;
-  constructor(private customerService:CustomerService, public authService:AuthService) {
+  constructor(private customerService:CustomerService, public authService:AuthService, private router:Router) {
   }
 
     ngOnInit(): void {
@@ -45,5 +46,9 @@ export class CustomersComponent implements OnInit{
         console.log(err)
       }
     })
+  }
+
+  updateCustomer(id: number) {
+    this.router.navigate(['admin/update-customer', id]);
   }
 }

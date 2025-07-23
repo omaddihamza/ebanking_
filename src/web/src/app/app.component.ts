@@ -10,7 +10,7 @@ export class AppComponent implements OnInit{
 
   title = 'ui-ebanking';
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService  ) {
   }
   ngOnInit(): void {
      this.authService.loadJwtTokenFromLocalStorage();

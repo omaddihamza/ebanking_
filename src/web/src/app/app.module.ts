@@ -18,6 +18,10 @@ import { LoginComponent } from './components/login/login.component';
 import { AdminTemplateComponent } from './components/admin-template/admin-template.component';
 import {AppHttpInterceptor} from "./interceptors/app-http.interceptor";
 import { NotAuthorizedComponent } from './components/not-authorized/not-authorized.component';
+import { UpdateCustomerComponent } from './components/update-customer/update-customer.component';
+import { ListAccountsComponent } from './components/list-accounts/list-accounts.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { NotAuthorizedComponent } from './components/not-authorized/not-authoriz
     CurrentComponent,
     LoginComponent,
     AdminTemplateComponent,
-    NotAuthorizedComponent
+    NotAuthorizedComponent,
+    UpdateCustomerComponent,
+    ListAccountsComponent,
+    ProfileComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

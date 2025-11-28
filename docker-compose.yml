@@ -1,0 +1,52 @@
+version: "3.8"
+services:
+  database:
+    image: postgres:16
+    container_name: ebank-database
+    environment:
+      POSTGRES_DB: ebankdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD:
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - my-network
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ebank-backend
+    image: ebank-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    networks:
+      - my-network
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/ebankdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD:
+
+  frontend:
+    build:
+      context: ./src/web
+      dockerfile: Dockerfile
+    container_name: ebank-frontend
+    image: ebank-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - my-network
+
+volumes:
+  postgres_data:
+
+networks:
+  my-network:
+    driver: bridge
